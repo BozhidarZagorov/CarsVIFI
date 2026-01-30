@@ -3,6 +3,8 @@ import { addCar, getUserCars } from "../services/firestore";
 import { useAuth } from "../ctx/AuthContext";
 import { uploadImage } from "../services/cloudinary";
 import  DragDrop  from "../components/DragAndDrop";
+import RenewalItem from "../components/RenewalItem";
+import { RENEWAL_RULES } from "../utils/renewalRules";
 
 function YourCars() {
   const { user } = useAuth();
@@ -80,18 +82,21 @@ function YourCars() {
 
       <ul>
         {cars.map((car) => (
-          <li key={car.id}>
-            {car.imageUrl && (
-              <img
-                src={car.imageUrl}
-                alt="car"
-                width={120}
-                style={{ display: "block" }}
-              />
-            )}
-            {car.brand} {car.model} ({car.plate})
-          </li>
-        ))}
+  <div key={car.id} style={{ border: "1px solid #ddd", padding: 16 }}>
+    <h3>{car.brand} {car.model}</h3>
+    <img src={car.imageUrl} alt="car" width={120} style={{ display: "block" }}/>
+
+    {Object.keys(RENEWAL_RULES).map((key) => (
+      <RenewalItem
+        key={key}
+        carId={car.id}
+        itemKey={key}
+        data={car[key]}
+        onRenew={loadCars}
+      />
+    ))}
+  </div>
+))}
       </ul>
     </div>
   );
