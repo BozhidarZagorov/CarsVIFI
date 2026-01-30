@@ -1,4 +1,4 @@
-import {collection, doc, setDoc, addDoc, getDocs, query, where, serverTimestamp} from "firebase/firestore";
+import {collection, updateDoc, doc, setDoc, addDoc, getDocs, query, where, serverTimestamp} from "firebase/firestore";
 import { db } from "./firebase";
 
 /* USERS */
@@ -32,4 +32,12 @@ export const getUserCars = async (userId) => {
     id: doc.id,
     ...doc.data(),
   }));
+};
+
+export const renewItem = async (carId, itemKey, data) => {
+  const ref = doc(db, "cars", carId);
+
+  await updateDoc(ref, {
+    [itemKey]: data,
+  });
 };
