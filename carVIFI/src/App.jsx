@@ -5,6 +5,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { logoutUser } from "./services/auth";
 import { useAuth } from "./ctx/AuthContext";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 function App() {
   const { user } = useAuth();
@@ -19,6 +20,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/login" element={<AuthPage />} />
         <Route path="/cars"element={
             <ProtectedRoute>
