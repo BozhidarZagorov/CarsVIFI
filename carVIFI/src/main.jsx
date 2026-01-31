@@ -6,6 +6,7 @@ import { AuthProvider } from "./ctx/AuthContext";
 import { CarsProvider } from "./ctx/CarsContext";
 import "./styles/main.css";
 import "./styles/home.css"
+import "./styles/auth.css"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
