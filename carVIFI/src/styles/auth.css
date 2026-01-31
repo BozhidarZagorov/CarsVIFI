@@ -1,3 +1,4 @@
+/* Container for auth pages */
 .auth-page {
   max-width: 400px;
   margin: 4rem auto;
@@ -7,6 +8,7 @@
   text-align: center;
 }
 
+/* Form inputs */
 .auth-page input {
   display: block;
   width: 100%;
@@ -14,37 +16,45 @@
   margin: 0.5rem 0;
   border-radius: 6px;
   border: 1px solid #ccc;
+  font-size: 0.9rem;
 }
 
-.auth-page button {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  background: black;
-  color: white;
-  margin-top: 1rem;
-  cursor: pointer;
-}
-
-.auth-page .error {
-  color: #c62828;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.google-btn {
+/* Shared button style */
+.auth-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 6px 12px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: white;
-  background-color: #4285F4;
-  border: none;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s ease, box-shadow 0.2s ease;
+
+  /* FIXED width so all buttons match */
+  width: 100%; /* full width to match inputs */
+  max-width: 200px; /* optional: limits max width */
+  text-align: center;
+  margin: 0.5rem auto 0 auto; /* center button and add spacing */
+}
+
+/* Normal email/password buttons */
+.normal-btn {
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+.normal-btn:hover {
+  background-color: #222;
+}
+
+/* Google button */
+.google-btn {
+  background-color: #4285F4;
+  color: white;
+  border: none;
 }
 
 .google-btn:hover {
@@ -52,13 +62,35 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
+/* Google icon */
 .google-icon {
   width: 18px;
   height: 18px;
 }
 
+/* Focus outlines for accessibility */
+.auth-btn:focus,
 .google-btn:focus {
   outline: 2px solid #3367d6;
   outline-offset: 2px;
 }
 
+/* Error message styling */
+.auth-page .error {
+  color: #c62828;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Optional: make page responsive on mobile */
+@media (max-width: 480px) {
+  .auth-page {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .auth-btn {
+    max-width: 100%;
+    width: 100%;
+  }
+}
