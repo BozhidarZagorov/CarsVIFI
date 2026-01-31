@@ -1,0 +1,56 @@
+.home {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.home h1 {
+  font-size: 2.5rem;
+}
+
+.home-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  background: black;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid black;
+  color: black;
+}
+
+.expiry-summary {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #f5f5f5;
+  width: 100%;
+  max-width: 420px;
+}
+
+.expired {
+  color: #c62828;
+  font-weight: 600;
+}
+
+.warning {
+  color: #f57c00;
+  font-weight: 600;
+}
+
+.ok {
+  color: #2e7d32;
+  font-weight: 600;
+}

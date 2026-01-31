@@ -4,6 +4,7 @@ import YourCars from "./pages/YourCars";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { logoutUser } from "./services/auth";
 import { useAuth } from "./ctx/AuthContext";
+import Home from "./pages/Home";
 
 function App() {
   const { user } = useAuth();
@@ -17,6 +18,7 @@ function App() {
       )}
 
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<AuthPage />} />
         <Route path="/cars"element={
             <ProtectedRoute>
