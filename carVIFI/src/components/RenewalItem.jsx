@@ -5,6 +5,8 @@ import { renewItem } from "../services/firestore";
 
 function RenewalItem({ carId, itemKey, data, onRenew }) {
   const [showPicker, setShowPicker] = useState(false);
+  const [selectedDate, setSelectedDate] = useState("");
+
 
   const rule = RENEWAL_RULES[itemKey];
   const status = getStatus(data?.expiresAt);
@@ -31,11 +33,26 @@ function RenewalItem({ carId, itemKey, data, onRenew }) {
       </button>
 
       {showPicker && (
-        <input
-          type="date"
-          onChange={(e) => handleRenew(e.target.value)}
-        />
+        <div style={{ marginTop: 8 }}>
+          <input
+            type="date"
+            value={selectedDate}
+            onChange={(e) => setSelectedDate(e.target.value)}
+          />
+
+          <button
+            disabled={!selectedDate}
+            onClick={() => handleRenew(selectedDate)}
+          >
+            Confirm
+          </button>
+
+          <button onClick={() => setShowPicker(false)}>
+            Cancel
+          </button>
+        </div>
       )}
+
     </div>
   );
 }
