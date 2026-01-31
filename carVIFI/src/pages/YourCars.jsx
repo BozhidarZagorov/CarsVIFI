@@ -5,6 +5,7 @@ import { uploadImage } from "../services/cloudinary";
 import  DragDrop  from "../components/DragAndDrop";
 import RenewalItem from "../components/RenewalItem";
 import { RENEWAL_RULES } from "../utils/renewalRules";
+import { checkAndSendReminders } from "../utils/reminderCheck";
 
 function YourCars() {
   const { user } = useAuth();
@@ -52,6 +53,12 @@ function YourCars() {
   useEffect(() => {
     loadCars();
   }, []);
+
+  useEffect(() => {
+  if (cars.length > 0) {
+    checkAndSendReminders(user, cars);
+  }
+}, [cars]);
 
 
 
