@@ -31,3 +31,34 @@
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
+
+.google-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+  background-color: #4285F4;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.google-btn:hover {
+  background-color: #357ae8;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.google-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.google-btn:focus {
+  outline: 2px solid #3367d6;
+  outline-offset: 2px;
+}
+
