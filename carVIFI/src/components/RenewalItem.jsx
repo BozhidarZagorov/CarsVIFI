@@ -2,6 +2,7 @@ import { useState } from "react";
 import { RENEWAL_RULES } from "../utils/renewalRules";
 import { addMonths, getStatus } from "../utils/dateUtils";
 import { renewItem } from "../services/firestore";
+import { downloadCalendarReminder } from "../utils/calendar";
 
 function RenewalItem({ carId, itemKey, data, onRenew }) {
   const [showPicker, setShowPicker] = useState(false);
@@ -21,6 +22,11 @@ function RenewalItem({ carId, itemKey, data, onRenew }) {
 
     setShowPicker(false);
     onRenew();
+
+    downloadCalendarReminder({
+      title: `${rule.label} expires`,
+      date: expiresAt,
+    });
   };
 
   return (
