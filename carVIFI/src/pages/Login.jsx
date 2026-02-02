@@ -8,28 +8,42 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    if (loading) return;
+
+    setLoading(true);
     setError("");
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/"); // redirect to Home
+      navigate("/");
     } catch (err) {
       setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
-  const handleGoogleLogin = async () => {
-  try {
-    const result = await signInWithPopup(auth, provider);
-    // const user = result.user; //user info
 
-    navigate("/"); // Redirect to Home
-  } catch (error) {
-    console.error("Google login error:", error);
-  }
-};
+  const handleGoogleLogin = async () => {
+    if (loading) return;
+
+    setLoading(true);
+    setError("");
+
+    try {
+      await signInWithPopup(auth, provider);
+      navigate("/");
+    } catch (err) {
+      console.error("Google login error:", err);
+      setError("Google login failed.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   return (
     <div className="auth-page">
@@ -53,10 +67,10 @@ export default function Login() {
           required
         />
 
-        <button type="submit" className="auth-btn normal-btn">Login</button>
+        <button type="submit" disabled={loading} className="auth-btn normal-btn">{loading ? "Logging in..." : "Login"}</button>
         
       </form>
-        <button onClick={handleGoogleLogin} className="auth-btn google-btn">
+        <button onClick={handleGoogleLogin} disabled={loading} className="auth-btn google-btn">
           <svg className="google-icon" viewBox="0 0 48 48">
             <path fill="#FFC107" d="M43.6 20.4H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8.1 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c10.5 0 19-8.5 19-19 0-1.3-.1-2.3-.4-3.6z"/>
             <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.6 19 12 24 12c3.1 0 5.9 1.2 8.1 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4c-7.7 0-14.4 4.4-17.7 10.7z"/>
