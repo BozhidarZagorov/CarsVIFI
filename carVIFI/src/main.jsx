@@ -4,9 +4,10 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { AuthProvider } from "./ctx/AuthContext";
 import { CarsProvider } from "./ctx/CarsContext";
-import "./styles/main.css";
+import "./styles/main.css"
 import "./styles/home.css"
 import "./styles/auth.css"
+import "./styles/header.css"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

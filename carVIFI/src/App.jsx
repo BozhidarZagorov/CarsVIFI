@@ -2,23 +2,18 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import AuthPage from "./pages/AuthPage";
 import YourCars from "./pages/YourCars";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { logoutUser } from "./services/auth";
 import { useAuth } from "./ctx/AuthContext";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Header from "./components/Header";
 
 function App() {
   const { user } = useAuth();
 
   return (
     <>
-      {user && (
-        <div style={{ padding: 16 }}>
-          <button onClick={logoutUser}>Logout</button>
-        </div>
-      )}
-
+    <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
