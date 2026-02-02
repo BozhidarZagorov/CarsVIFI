@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   const { user } = useAuth();
@@ -27,6 +28,7 @@ function App() {
         />
         <Route path="*" element={<Navigate to={user ? "/cars" : "/login"} replace />}/>
       </Routes>
+  <Footer />
     </>
   );
 }
