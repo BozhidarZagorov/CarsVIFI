@@ -14,7 +14,9 @@ function App() {
 
   return (
     <>
-    <Header />
+    <div className="app-layout">
+  <Header />
+    <main className="app-content">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -28,7 +30,9 @@ function App() {
         />
         <Route path="*" element={<Navigate to={user ? "/cars" : "/login"} replace />}/>
       </Routes>
+    </main>
   <Footer />
+    </div>
     </>
   );
 }
