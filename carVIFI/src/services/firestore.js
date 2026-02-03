@@ -1,4 +1,4 @@
-import {collection, updateDoc, doc, setDoc, addDoc, getDocs, query, where, serverTimestamp} from "firebase/firestore";
+import {collection, deleteDoc, updateDoc, doc, setDoc, addDoc, getDocs, query, where, serverTimestamp} from "firebase/firestore";
 import { db } from "./firebase";
 
 /* USERS */
@@ -22,6 +22,11 @@ export const addCar = async (userId, carData) => {
     userId,
     createdAt: serverTimestamp(),
   });
+};
+
+export const deleteCar = async (userId, carId) => {
+  const ref = doc(db, "users", userId, "cars", carId);
+  await deleteDoc(ref);
 };
 
 export const getUserCars = async (userId) => {
