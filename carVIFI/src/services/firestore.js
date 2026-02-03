@@ -29,6 +29,14 @@ export const deleteCar = async (userId, carId) => {
   await deleteDoc(ref);
 };
 
+export const updateCar = async (userId, carId, data) => {
+  const ref = doc(db, "cars", carId);
+  await updateDoc(ref, {
+    ...data,
+    userId,
+  });
+};
+
 export const getUserCars = async (userId) => {
   const q = query(collection(db, "cars"), where("userId", "==", userId));
   const snapshot = await getDocs(q);
