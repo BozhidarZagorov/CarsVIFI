@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getUserCars, deleteCar } from "../services/firestore";
 import { useAuth } from "../ctx/AuthContext";
 import RenewalItem from "../components/RenewalItem";
 import { RENEWAL_RULES } from "../utils/renewalRules";
@@ -56,7 +57,15 @@ function YourCars() {
             <Link to={`/cars/edit/${car.id}`}>
               <button>Edit</button>
             </Link>
+
+            <button onClick={async () => {
+                if (!window.confirm("Are you sure you want to remove this car?")) return;
+                await deleteCar(user.uid, car.id);
+                loadCars();
+              }}>
+                Remove this car
             </button>
+
 
           </div>
           
