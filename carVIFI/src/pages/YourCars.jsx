@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getUserCars, handleDelete } from "../services/firestore";
 import { useAuth } from "../ctx/AuthContext";
 import RenewalItem from "../components/RenewalItem";
 import { RENEWAL_RULES } from "../utils/renewalRules";
@@ -53,6 +54,9 @@ function YourCars() {
                 onRenew={loadCars}
               />
             ))}
+            <button onClick={() => handleDelete(car.id)}>
+              Remove this car
+            </button>
 
           </div>
           
