@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AddCar from "./pages/AddCar";
+import EditCar from "./pages/EditCar";
 
 function App() {
   const { user } = useAuth();
@@ -50,7 +51,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+        <Route
+          path="/cars/edit/:id"
+          element={
+            <ProtectedRoute>
+              <EditCar />
+            </ProtectedRoute>
+          }
+        />
 
         <Route path="*" element={<Navigate to={user ? "/cars" : "/login"} replace />}/>
       </Routes>
