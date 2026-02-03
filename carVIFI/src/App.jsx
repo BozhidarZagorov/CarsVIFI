@@ -1,7 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import AuthPage from "./pages/AuthPage";
-import YourCars from "./pages/YourCars";
+
+import AuthRoute from "./components/AuthRoute";
 import ProtectedRoute from "./components/ProtectedRoute";
+
+import YourCars from "./pages/YourCars";
 import { useAuth } from "./ctx/AuthContext";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -19,9 +21,20 @@ function App() {
     <main className="app-content">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<AuthPage />} />
+
+        <Route path="/login" element={
+            <AuthRoute>
+              <Login/>
+            </AuthRoute>
+          } 
+        />
+        <Route path="/register" element={
+            <AuthRoute>
+              <Register/>
+            </AuthRoute>
+          } 
+        />
+
         <Route path="/cars"element={
             <ProtectedRoute>
               <YourCars />
