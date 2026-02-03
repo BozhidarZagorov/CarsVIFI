@@ -25,7 +25,10 @@ export const addCar = async (userId, carData) => {
 };
 
 export const deleteCar = async (userId, carId) => {
-  const ref = doc(db, "users", userId, "cars", carId);
+  if (!carId) throw new Error("No carId provided");
+
+  const ref = doc(db, "cars", carId);
+  // console.log("Deleting car:", carId, "user:", userId);
   await deleteDoc(ref);
 };
 
