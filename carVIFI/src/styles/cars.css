@@ -1,0 +1,31 @@
+.cars-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* horizontal center */
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.car-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin-top: 16px;
+  gap: 16px;
+}
+
+.car-info {
+  flex: 1;
+}
+
+.car-image {
+  width: 680px;       /* wider = rectangular */
+  height: 210px;      /* controlled height */
+  object-fit: cover;  /* crop instead of stretch */
+  border-radius: 8px;
+  flex-shrink: 0;     /* prevents layout stretching */
+}
+

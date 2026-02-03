@@ -10,6 +10,7 @@ import "./styles/auth.css"
 import "./styles/header.css"
 import "./styles/footer.css"
 import "./styles/App.css"
+import "./styles/cars.css"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

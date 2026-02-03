@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import AddCar from "./pages/AddCar";
 
 function App() {
   const { user } = useAuth();
@@ -41,6 +42,16 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/cars/addcar"
+          element={
+            <ProtectedRoute>
+              <AddCar />
+            </ProtectedRoute>
+          }
+        />
+
+
         <Route path="*" element={<Navigate to={user ? "/cars" : "/login"} replace />}/>
       </Routes>
     </main>
