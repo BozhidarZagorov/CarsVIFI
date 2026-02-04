@@ -1,0 +1,40 @@
+.drag-drop-box {
+  border: 2px dashed #aaa;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 8px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.drag-drop-box:hover {
+  border-color: #000;
+  background: #fafafa;
+}
+
+.drag-drop-text {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.drag-drop-text span {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.drag-drop-preview {
+  max-width: 100%;
+  max-height: 160px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.drag-drop-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
