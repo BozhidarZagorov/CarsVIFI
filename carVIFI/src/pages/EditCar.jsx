@@ -16,6 +16,7 @@ function EditCar() {
   const [image, setImage] = useState(null);
   const [existingImage, setExistingImage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const loadCar = async () => {
@@ -38,51 +39,77 @@ function EditCar() {
 
   const handleUpdate = async () => {
     if (loading) return;
-
-    setLoading(true);
-
-    let imageUrl = existingImage;
-    if (image) {
-      imageUrl = await uploadImage(image);
+    
+    if (!brand || !model || !plate) {
+      setError("All fields are required.");
+      return;
     }
 
-    await updateCar(user.uid, id, {
-      brand,
-      model,
-      plate,
-      imageUrl,
-    });
+    setLoading(true);
+    setError("");
+    try {
+      let imageUrl = existingImage;
+      if (image) {
+        imageUrl = await uploadImage(image);
+      }
 
-    navigate("/cars");
+      await updateCar(user.uid, id, {
+        brand,
+        model,
+        plate,
+        imageUrl,
+      });
+
+      navigate("/cars");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div style={{ padding: 24 }}>
-      <h2>Edit Car ✏️</h2>
+  <div className="car-form-page">
+    <h2>Edit Car ✏️</h2>
 
+    {error && <p className="error">{error}</p>}
+
+    <div className="image-upload-wrapper">
       <DragDrop image={image} setImage={setImage} preview={existingImage} />
+    </div>
 
+    <div className="car-form-fields">
       <input
-        value={brand}
-        onChange={e => setBrand(e.target.value)}
+        type="text"
         placeholder="Brand"
-      />
-      <input
-        value={model}
-        onChange={e => setModel(e.target.value)}
-        placeholder="Model"
-      />
-      <input
-        value={plate}
-        onChange={e => setPlate(e.target.value)}
-        placeholder="Plate"
+        value={brand}
+        onChange={(e) => setBrand(e.target.value)}
       />
 
-      <button onClick={handleUpdate} disabled={loading}>
+      <input
+        type="text"
+        placeholder="Model"
+        value={model}
+        onChange={(e) => setModel(e.target.value)}
+      />
+
+      <input
+        type="text"
+        placeholder="Plate"
+        value={plate}
+        onChange={(e) => setPlate(e.target.value)}
+      />
+
+      <button
+        className="car-form-btn"
+        onClick={handleUpdate}
+        disabled={loading}
+      >
         {loading ? "Saving..." : "Save Changes"}
       </button>
     </div>
-  );
+  </div>
+);
 }
 
 export default EditCar;
