@@ -12,6 +12,7 @@ import "./styles/footer.css"
 import "./styles/App.css"
 import "./styles/cars.css"
 import "./styles/carForm.css"
+import "./styles/drag&drop.css"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
