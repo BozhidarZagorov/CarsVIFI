@@ -1,0 +1,57 @@
+/* Renewal item */
+.renew-item {
+  margin-bottom: 12px;
+}
+
+/* Top row */
+.renew-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Status label */
+.renew-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.renew-status.ok {
+  color: #2e7d32;
+}
+
+.renew-status.warning {
+  color: #f9a825;
+}
+
+.renew-status.expired {
+  color: #c62828;
+}
+
+/* Renew button */
+.btn-renew {
+  background: #1976d2;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.7rem;
+}
+
+.btn-renew:hover {
+  background: #1565c0;
+}
+
+/* Date picker section */
+.renew-picker {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.renew-picker input[type="date"] {
+  padding: 0.4rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 0.8rem;
+}
