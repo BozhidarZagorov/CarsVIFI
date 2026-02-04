@@ -29,38 +29,49 @@ function RenewalItem({ carId, itemKey, data, onRenew }) {
     });
   };
 
-  return (
-    <div style={{ marginBottom: 12 }}>
-      <strong>{rule.label}</strong>{" "}
-      <span>({status})</span>
+ return (
+  <div className="renew-item">
+    <div className="renew-row">
+      <strong>{rule.label}</strong>
+      <span className={`renew-status ${status}`}>
+        {status}
+      </span>
 
-      <button onClick={() => setShowPicker(!showPicker)}>
-        Renewed
+      <button
+        className="btn btn-renew"
+        onClick={() => setShowPicker(!showPicker)}
+      >
+        Renew
       </button>
-
-      {showPicker && (
-        <div style={{ marginTop: 8 }}>
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-          />
-
-          <button
-            disabled={!selectedDate}
-            onClick={() => handleRenew(selectedDate)}
-          >
-            Confirm
-          </button>
-
-          <button onClick={() => setShowPicker(false)}>
-            Cancel
-          </button>
-        </div>
-      )}
-
     </div>
-  );
+
+    {showPicker && (
+      <div className="renew-picker">
+        <input
+          type="date"
+          value={selectedDate}
+          onChange={(e) => setSelectedDate(e.target.value)}
+        />
+
+        <button
+          className="btn btn-primary"
+          disabled={!selectedDate}
+          onClick={() => handleRenew(selectedDate)}
+        >
+          Confirm
+        </button>
+
+        <button
+          className="btn btn-secondary"
+          onClick={() => setShowPicker(false)}
+        >
+          Cancel
+        </button>
+      </div>
+    )}
+  </div>
+);
+
 }
 
 export default RenewalItem;
