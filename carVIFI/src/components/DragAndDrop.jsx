@@ -18,23 +18,16 @@ function DragDrop({ image, setImage }) {
 
   return (
     <div
+      className="drag-drop-box"
       onDragOver={(e) => e.preventDefault()}
       onDrop={handleDrop}
-      onClick={() => inputRef.current.click()}
-      style={{
-        border: "2px dashed #aaa",
-        padding: 20,
-        textAlign: "center",
-        cursor: "pointer",
-        marginBottom: 16,
-        background: "#fff",
-      }}
+      onClick={() => inputRef.current?.click()}
     >
       <input
         ref={inputRef}
         type="file"
         accept="image/*"
-        hidden
+        className="drag-drop-input"
         onChange={handleSelect}
       />
 
@@ -42,10 +35,13 @@ function DragDrop({ image, setImage }) {
         <img
           src={URL.createObjectURL(image)}
           alt="preview"
-          width={180}
+          className="drag-drop-preview"
         />
       ) : (
-        <p>Drag & drop car image here or click to upload</p>
+        <p className="drag-drop-text">
+          Drag & drop car image here<br />
+          <span>or click to upload</span>
+        </p>
       )}
     </div>
   );
