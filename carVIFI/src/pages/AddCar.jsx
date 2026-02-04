@@ -47,36 +47,47 @@ function AddCar() {
   };
 
   return (
-    <div style={{ padding: 24 }}>
+    <div className="car-form-page">
       <h2>Add Car 🚗</h2>
-
-      <DragDrop image={image} setImage={setImage} />
-
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      <input
-        placeholder="Brand"
-        value={brand}
-        onChange={(e) => setBrand(e.target.value)}
-      />
-
-      <input
-        placeholder="Model"
-        value={model}
-        onChange={(e) => setModel(e.target.value)}
-      />
-
-      <input
-        placeholder="Plate"
-        value={plate}
-        onChange={(e) => setPlate(e.target.value)}
-      />
-
-      <button onClick={handleAddCar} disabled={loading}>
-        {loading ? "Saving..." : "Add Car"}
-      </button>
+      
+      {error && <p className="error">{error}</p>}
+      
+      <div className="image-upload-wrapper">
+        <DragDrop image={image} setImage={setImage} />
+      </div>
+      
+      <div className="car-form-fields">
+        <input
+          type="text"
+          placeholder="Brand"
+          value={brand}
+          onChange={(e) => setBrand(e.target.value)}
+        />
+    
+        <input
+          type="text"
+          placeholder="Model"
+          value={model}
+          onChange={(e) => setModel(e.target.value)}
+        />
+    
+        <input
+          type="text"
+          placeholder="Plate"
+          value={plate}
+          onChange={(e) => setPlate(e.target.value)}
+        />
+    
+        <button
+          className="car-form-btn"
+          onClick={handleAddCar}
+          disabled={loading}
+        >
+          {loading ? "Saving..." : "Add Car"}
+        </button>
+      </div>
     </div>
+
   );
 }
-
 export default AddCar;
