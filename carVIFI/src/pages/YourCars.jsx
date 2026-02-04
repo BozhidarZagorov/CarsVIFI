@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 function YourCars() {
   const { user } = useAuth();
   const [cars, setCars] = useState([]);
+  const [deletingId, setDeletingId] = useState(null);
+
 
   const loadCars = async () => {
     const data = await getUserCars(user.uid);
@@ -31,7 +33,7 @@ function YourCars() {
         <h2>My Cars 🚗</h2>
 
         <Link to="/cars/addcar">
-          <button>Add New Car</button>
+          <button className="btn btn-primary">Add New Car</button>
         </Link>
       </div>
 
@@ -54,17 +56,33 @@ function YourCars() {
                 onRenew={loadCars}
               />
             ))}
-            <Link to={`/cars/edit/${car.id}`}>
-              <button>Edit</button>
-            </Link>
+            <div className="car-actions">
+                <Link to={`/cars/edit/${car.id}`}>
+                  <button className="btn btn-secondary">Edit</button>
+                </Link>
 
-            <button onClick={async () => {
-                if (!window.confirm("Are you sure you want to remove this car?")) return;
-                await deleteCar(user.uid, car.id);
-                loadCars();
-              }}>
-                Remove this car
-            </button>
+                <button
+                  className="btn btn-danger"
+                  disabled={deletingId === car.id}
+                  onClick={async () => {
+                    if (deletingId) return;
+                  
+                    if (!window.confirm("Are you sure you want to remove this car?")) return;
+                  
+                    try {
+                      setDeletingId(car.id);
+                      await deleteCar(user.uid, car.id);
+                      await loadCars();
+                    } finally {
+                      setDeletingId(null);
+                    }
+                  }}
+                    >
+                    {deletingId === car.id ? "Removing..." : "Remove"}
+                </button>
+            </div>
+
+
 
 
           </div>
