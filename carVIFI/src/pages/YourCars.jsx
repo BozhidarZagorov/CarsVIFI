@@ -30,7 +30,7 @@ function YourCars() {
   return (
     <div style={{ padding: 24 }}>
       <div className="cars-header">
-        <h2>My Cars 🚗</h2>
+        <h2 className="logo-cars">My Cars <img src="/car.png" alt="Carvifi" className="logo-imgcars" /></h2>
 
         <Link to="/cars/addcar">
           <button className="btn btn-primary">Add New Car</button>
