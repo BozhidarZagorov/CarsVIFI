@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="home">
 
-      <h1>Carvifi 🚗</h1>
+      <h1 className="logo-home">Carvifi <img src="/carVIFIlogo.png" alt="Carvifi logo" className="logo-imghome" /></h1>
       <p>Never miss a renewal again.</p>
 
       {!user ? (
