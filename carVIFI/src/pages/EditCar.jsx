@@ -70,7 +70,7 @@ function EditCar() {
 
   return (
   <div className="car-form-page">
-    <h2>Edit Car ✏️</h2>
+    <h2 className="logo-addcar">Edit Car <img src="/caredit.png" alt="Carvifi" className="logo-imgaddcar" /></h2>
 
     {error && <p className="error">{error}</p>}
 
