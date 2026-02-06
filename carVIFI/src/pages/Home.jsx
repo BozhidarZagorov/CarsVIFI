@@ -24,7 +24,6 @@ export default function Home() {
       ) : (
         <div className="home-actions">
           <Link to="/cars" className="btn">My Cars</Link>
-          <Link to="/add-car" className="btn btn-outline">Add a Car</Link>
         </div>
       )}
       {summary && (
