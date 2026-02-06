@@ -1,4 +1,6 @@
 body {
+  width: 100%;
+  overflow-x: hidden;
   margin: 0;
   font-family: system-ui, sans-serif;
   background: #f6f7f9;
