@@ -48,7 +48,7 @@ function AddCar() {
 
   return (
     <div className="car-form-page">
-      <h2>Add Car 🚗</h2>
+      <h2 className="logo-addcar">Add Car <img src="/car.png" alt="Carvifi" className="logo-imgaddcar" /></h2>
       
       {error && <p className="error">{error}</p>}
       
