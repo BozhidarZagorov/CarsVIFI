@@ -90,4 +90,15 @@
   margin-top: 12px;
 }
 
+.logo-cars {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
 
+.logo-imgcars{
+  height: 26px;
+  width: auto;
+  display: block;
+}

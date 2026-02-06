@@ -17,7 +17,8 @@ export default function Header() {
         {/* LEFT SIDE */}
         <div className="header-left">
           <Link to="/" className="logo">
-            Carvifi 🚗
+            Carvifi
+            <img src="/carVIFIlogo.png" alt="Carvifi logo" className="logo-img" />
           </Link>
 
           {user && (

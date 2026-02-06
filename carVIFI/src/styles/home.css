@@ -54,3 +54,16 @@
   color: #2e7d32;
   font-weight: 600;
 }
+
+.logo-home {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.logo-imghome {
+  height: 36px;
+  width: auto;
+  display: block;
+}
