@@ -27,6 +27,25 @@
   z-index: 1;
 }
 
+.auth-register-wraper {
+  min-height: 90vh;
+  padding: 24px;
+
+  background-image: url('/register.png'); /* your cars bg */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+  z-index: 0;
+}
+
+/* keep content above the background */
+.auth-register-wraper > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Form inputs */
 .auth-page input {
   display: block;
