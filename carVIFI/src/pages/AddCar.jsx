@@ -47,6 +47,7 @@ function AddCar() {
   };
 
   return (
+  <div className="car-form-wraper">
     <div className="car-form-page">
       <h2 className="logo-addcar">Add Car <img src="/car.png" alt="Carvifi" className="logo-imgaddcar" /></h2>
       
@@ -62,31 +63,32 @@ function AddCar() {
           placeholder="Brand"
           value={brand}
           onChange={(e) => setBrand(e.target.value)}
-        />
+          />
     
         <input
           type="text"
           placeholder="Model"
           value={model}
           onChange={(e) => setModel(e.target.value)}
-        />
+          />
     
         <input
           type="text"
           placeholder="Plate"
           value={plate}
           onChange={(e) => setPlate(e.target.value)}
-        />
+          />
     
         <button
           className="car-form-btn"
           onClick={handleAddCar}
           disabled={loading}
-        >
+          >
           {loading ? "Saving..." : "Add Car"}
         </button>
       </div>
     </div>
+  </div>
 
   );
 }
