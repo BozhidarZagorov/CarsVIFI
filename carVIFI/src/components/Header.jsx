@@ -23,8 +23,8 @@ export default function Header() {
 
           {user && (
             <nav className="nav-left">
-              <Link to="/" className="nav-link">Home</Link>
-              <Link to="/cars" className="nav-link">My Cars</Link>
+              <Link to="/" className="nav-btn">Home</Link>
+              <Link to="/cars" className="nav-btn">My Cars</Link>
             </nav>
           )}
         </div>
@@ -37,8 +37,8 @@ export default function Header() {
             </button>
           ) : (
             <>
-              <Link to="/login" className="nav-link">Login</Link>
-              <Link to="/register" className="nav-link">Register</Link>
+              <Link to="/login" className="nav-btnlogin">Login</Link>
+              <Link to="/register" className="nav-btnRegister">Register</Link>
             </>
           )}
         </nav>

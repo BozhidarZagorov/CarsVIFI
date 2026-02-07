@@ -7,7 +7,7 @@
   text-align: center;
   gap: 1rem;
 
-  background-image: url('../../public/home.jpg');
+  background-image: url('/home.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -33,9 +33,28 @@
 .btn {
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
-  background: black;
+  background: #0a72ee;
   color: white;
   text-decoration: none;
+}
+
+.btn:hover{
+  background: #1565c0;
+}
+
+.btn-login {
+  background: #06be38;
+  text-decoration: none;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-login:hover {
+  background: #328e04;
 }
 
 .btn-outline {
