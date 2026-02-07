@@ -46,6 +46,7 @@ export default function Login() {
 
 
   return (
+  <div className="auth-login-wraper">
     <div className="auth-page">
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
@@ -57,7 +58,7 @@ export default function Login() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-        />
+          />
 
         <input
           type="password"
@@ -65,7 +66,7 @@ export default function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-        />
+          />
 
         <button type="submit" disabled={loading} className="auth-btn normal-btn">{loading ? "Logging in..." : "Login"}</button>
         
@@ -83,5 +84,6 @@ export default function Login() {
         Don’t have an account? <Link to="/register">Register</Link>
       </p>
     </div>
+  </div>
   );
 }
