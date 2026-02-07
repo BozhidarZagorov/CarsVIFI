@@ -14,12 +14,11 @@ export default function Home() {
     <div className="home">
 
       <h1 className="logo-home">Carvifi <img src="/carVIFIlogo.png" alt="Carvifi logo" className="logo-imghome" /></h1>
-      <p>Never miss a renewal again.</p>
+      <h3>Drive without worrying about missed renewals again.</h3>  
 
       {!user ? (
         <div className="home-actions">
-          <Link to="/login" className="btn">Login</Link>
-          <Link to="/register" className="btn btn-outline">Register</Link>
+          <Link to="/login" className="btn-login">Login</Link>
         </div>
       ) : (
         <div className="home-actions">
