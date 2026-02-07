@@ -38,63 +38,71 @@ function YourCars() {
       </div>
 
 
-      {cars.map((car) => (
-        <div
-          key={car.id}
-          className="car-card"
-        >
-          {/* LEFT SIDE */}
-          <div className="car-info">
-            <h3>{car.brand} {car.model}</h3>
+      {cars.length === 0 ? (
+          <div className="empty-state">
+            <p style={{ marginBottom: 16, fontSize: 18 }}>
+              You have not added any cars yet
+            </p>
 
-            {Object.keys(RENEWAL_RULES).map((key) => (
-              <RenewalItem
-                key={key}
-                carId={car.id}
-                itemKey={key}
-                data={car[key]}
-                onRenew={loadCars}
-              />
-            ))}
-            <div className="car-actions">
-                <Link to={`/cars/edit/${car.id}`}>
-                  <button className="btn btn-secondary">Edit</button>
-                </Link>
-
-                <button
-                  className="btn btn-danger"
-                  disabled={deletingId === car.id}
-                  onClick={async () => {
-                    if (deletingId) return;
-                  
-                    if (!window.confirm("Are you sure you want to remove this car?")) return;
-                  
-                    try {
-                      setDeletingId(car.id);
-                      await deleteCar(user.uid, car.id);
-                      await loadCars();
-                    } finally {
-                      setDeletingId(null);
-                    }
-                  }}
-                    >
-                    {deletingId === car.id ? "Removing..." : "Remove"}
-                </button>
-            </div>
-
-
-
-
+            <Link to="/cars/addcar">
+              <button className="btn btn-primary">
+                Add Car
+              </button>
+            </Link>
           </div>
+        ) : (
+          cars.map((car) => (
+            <div key={car.id} className="car-card">
+              {/* LEFT SIDE */}
+              <div className="car-info">
+                <h3>{car.brand} {car.model}</h3>
           
-          {/* RIGHT SIDE */}
-          <img
-            src={car.imageUrl}
-            alt="car"
-            className="car-image"
-          />
-        </div>
-      ))}
+                {Object.keys(RENEWAL_RULES).map((key) => (
+                  <RenewalItem
+                    key={key}
+                    carId={car.id}
+                    itemKey={key}
+                    data={car[key]}
+                    onRenew={loadCars}
+                  />
+                ))}
+
+                <div className="car-actions">
+                  <Link to={`/cars/edit/${car.id}`}>
+                    <button className="btn btn-secondary">Edit</button>
+                  </Link>
+              
+                  <button
+                    className="btn btn-danger"
+                    disabled={deletingId === car.id}
+                    onClick={async () => {
+                      if (deletingId) return;
+                      if (!window.confirm("Are you sure you want to remove this car?")) return;
+                    
+                      try {
+                        setDeletingId(car.id);
+                        await deleteCar(user.uid, car.id);
+                        await loadCars();
+                      } finally {
+                        setDeletingId(null);
+                      }
+                    }}
+                  >
+                    {deletingId === car.id ? "Removing..." : "Remove"}
+                  </button>
+                </div>
+              </div>
+                  
+              {/* RIGHT SIDE */}
+              <img
+                src={car.imageUrl || "/car-placeholder.png"}
+                alt="car"
+                className="car-image"
+              />
+            </div>
+          ))
+        )}
+
       
 
     </div>
