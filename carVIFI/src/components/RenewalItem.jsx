@@ -12,12 +12,16 @@ function RenewalItem({ carId, itemKey, data, onRenew }) {
   const rule = RENEWAL_RULES[itemKey];
   const status = getStatus(data?.expiresAt);
 
+  const expiresAt = data?.expiresAt
+    ? new Date(data.expiresAt.seconds * 1000)
+    : null;
+
   const handleRenew = async (date) => {
-    const expiresAt = addMonths(date, rule.months);
+    const newExpiresAt = addMonths(date, rule.months);
 
     await renewItem(carId, itemKey, {
       lastRenewed: date,
-      expiresAt,
+      expiresAt: newExpiresAt,
     });
 
     setShowPicker(false);
@@ -25,53 +29,44 @@ function RenewalItem({ carId, itemKey, data, onRenew }) {
 
     downloadCalendarReminder({
       title: `${rule.label} expires`,
-      date: expiresAt,
+      date: newExpiresAt,
     });
   };
 
  return (
-  <div className="renew-item">
-    <div className="renew-row">
-      <strong>{rule.label}</strong>
-      <span className={`renew-status ${status}`}>
-        {status}
-      </span>
+    <div className="renew-item">
+      <div className="renew-row">
+        <strong className="renew-label">{rule.label}</strong>
 
-      <button
-        className="btn btn-renew"
-        onClick={() => setShowPicker(!showPicker)}
-      >
-        Renew
-      </button>
-    </div>
-
-    {showPicker && (
-      <div className="renew-picker">
-        <input
-          type="date"
-          value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}
-        />
+        <span className={`renew-status ${status}`}>
+          {expiresAt ? expiresAt.toLocaleDateString() : "-"} | {status}
+        </span>
 
         <button
-          className="btn btn-primary"
-          disabled={!selectedDate}
-          onClick={() => handleRenew(selectedDate)}
+          className="btn-renew"
+          onClick={() => setShowPicker(!showPicker)}
         >
-          Confirm
-        </button>
-
-        <button
-          className="btn btn-secondary"
-          onClick={() => setShowPicker(false)}
-        >
-          Cancel
+          Renew
         </button>
       </div>
-    )}
-  </div>
-);
 
+      {showPicker && (
+        <div className="renew-picker">
+          <input
+            type="date"
+            value={selectedDate}
+            onChange={(e) => setSelectedDate(e.target.value)}
+          />
+          <button
+            className="btn-renew"
+            disabled={!selectedDate}
+            onClick={() => handleRenew(selectedDate)}
+          >
+            Confirm
+          </button>
+        </div>
+      )}
+    </div>
+  );
 }
-
 export default RenewalItem;
