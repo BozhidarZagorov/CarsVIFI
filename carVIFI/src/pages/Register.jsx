@@ -51,6 +51,7 @@ export default function Register() {
   };
 
   return (
+  <div className="auth-register-wraper">
     <div className="auth-page">
       <h2>Register</h2>
       <form onSubmit={handleRegister}>
@@ -62,7 +63,7 @@ export default function Register() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-        />
+          />
 
         <input
           type="password"
@@ -78,7 +79,7 @@ export default function Register() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
-        />
+          />
 
         <button type="submit" disabled={loading} className="auth-btn normal-btn">{loading ? "Registering..." : "Register"}</button>
         
@@ -96,5 +97,6 @@ export default function Register() {
         Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
+  </div>
   );
 }
