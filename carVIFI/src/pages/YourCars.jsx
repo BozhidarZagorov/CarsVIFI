@@ -28,6 +28,7 @@ function YourCars() {
   }, [cars]);
 
   return (
+  <div className="cars-page">
     <div style={{ padding: 24 }}>
       <div className="cars-header">
         <h2 className="logo-cars">My Cars <img src="/car.png" alt="Carvifi" className="logo-imgcars" /></h2>
@@ -106,6 +107,7 @@ function YourCars() {
       
 
     </div>
+</div>
   );
 }
 
