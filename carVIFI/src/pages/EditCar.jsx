@@ -69,6 +69,7 @@ function EditCar() {
   };
 
   return (
+<div className="car-editform-wraper">
   <div className="car-form-page">
     <h2 className="logo-addcar">Edit Car <img src="/caredit.png" alt="Carvifi" className="logo-imgaddcar" /></h2>
 
@@ -84,14 +85,14 @@ function EditCar() {
         placeholder="Brand"
         value={brand}
         onChange={(e) => setBrand(e.target.value)}
-      />
+        />
 
       <input
         type="text"
         placeholder="Model"
         value={model}
         onChange={(e) => setModel(e.target.value)}
-      />
+        />
 
       <input
         type="text"
@@ -104,11 +105,12 @@ function EditCar() {
         className="car-form-btn"
         onClick={handleUpdate}
         disabled={loading}
-      >
+        >
         {loading ? "Saving..." : "Save Changes"}
       </button>
     </div>
   </div>
+</div>
 );
 }
 
