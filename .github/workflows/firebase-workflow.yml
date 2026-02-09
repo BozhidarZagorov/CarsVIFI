@@ -51,5 +51,5 @@ jobs:
       - name: Deploy to Firebase Hosting
         run: |
           # Go to repo root so firebase.json is found
-          cd carVIFI/dist/..
+          cd ../..
           firebase deploy --only hosting --project carvifi-bg --token "${{ secrets.FIREBASE_SERVICE_ACCOUNT_CARVIFI_BG }}"
