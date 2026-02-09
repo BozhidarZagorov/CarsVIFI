@@ -14,6 +14,7 @@ import "./styles/cars.css"
 import "./styles/carForm.css"
 import "./styles/dragAndDrop.css"
 import "./styles/renewal.css"
+import "./styles/404.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
