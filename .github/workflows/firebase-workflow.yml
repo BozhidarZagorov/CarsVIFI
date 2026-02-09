@@ -8,22 +8,22 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: carVIFI
 
     steps:
       # Checkout repo
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       # Setup Node.js
-      - uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      # Create .env.production
+      # Create .env.production inside carVIFI
       - name: Create .env.production
         run: |
+          cd carVIFI
           echo "VITE_FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" > .env.production
           echo "VITE_FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> .env.production
           echo "VITE_FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> .env.production
@@ -31,17 +31,25 @@ jobs:
           echo "VITE_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}" >> .env.production
           echo "VITE_FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }}" >> .env.production
 
-      # Install dependencies
+      # Install dependencies inside carVIFI
       - name: Install dependencies
-        run: npm ci
+        run: |
+          cd carVIFI
+          npm ci
 
-      # Build Vite app
+      # Build the Vite project
       - name: Build project
-        run: npm run build
+        run: |
+          cd carVIFI
+          npm run build
 
-      # Deploy to Firebase Hosting
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CARVIFI_BG }}
-          projectId: carvifi-bg
+      # Install Firebase CLI
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      # Deploy to Firebase Hosting (production)
+      - name: Deploy to Firebase Hosting
+        run: |
+          # Go to repo root so firebase.json is found
+          cd carVIFI/dist/..
+          firebase deploy --only hosting --project carvifi-bg --token "${{ secrets.FIREBASE_SERVICE_ACCOUNT_CARVIFI_BG }}"
