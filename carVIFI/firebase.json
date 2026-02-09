@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "carVIFI/dist",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
