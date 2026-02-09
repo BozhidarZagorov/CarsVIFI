@@ -28,7 +28,6 @@ jobs:
       # Create .env.production inside carVIFI
       - name: Create .env.production
         run: |
-          cd carVIFI
           echo "VITE_FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}" > .env.production
           echo "VITE_FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}" >> .env.production
           echo "VITE_FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}" >> .env.production
@@ -39,13 +38,11 @@ jobs:
       # Install dependencies inside carVIFI
       - name: Install dependencies
         run: |
-          cd carVIFI
           npm ci
 
       # Build the Vite project
       - name: Build project
         run: |
-          cd carVIFI
           npm run build
 
       # Install Firebase CLI
