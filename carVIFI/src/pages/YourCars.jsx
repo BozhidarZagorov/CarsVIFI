@@ -56,7 +56,7 @@ function YourCars() {
             <div key={car.id} className="car-card">
               {/* LEFT SIDE */}
               <div className="car-info">
-                <h3>{car.brand} {car.model}</h3>
+                <h3>{car.brand} {car.model} Plate:{car.plate}</h3>
           
                 {Object.keys(RENEWAL_RULES).map((key) => (
                   <RenewalItem

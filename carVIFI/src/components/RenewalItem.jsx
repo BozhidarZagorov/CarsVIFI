@@ -39,7 +39,7 @@ function RenewalItem({ carId, itemKey, data, onRenew }) {
         <strong className="renew-label">{rule.label}</strong>
 
         <span className={`renew-status ${status}`}>
-         | {expiresAt ? expiresAt.toLocaleDateString() : "-"} | {status}
+        Expires on | {expiresAt ? expiresAt.toLocaleDateString("en-GB") : "-"} | {status}
         </span>
 
         <button
