@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route,} from "react-router-dom";
 
 import AuthRoute from "./components/AuthRoute";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -12,6 +12,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AddCar from "./pages/AddCar";
 import EditCar from "./pages/EditCar";
+import NotFound from "./pages/404"
 
 function App() {
   const { user } = useAuth();
@@ -23,21 +24,25 @@ function App() {
     <main className="app-content">
       <Routes>
         <Route path="/" element={<Home />} />
-
-        <Route path="/login" element={
+        <Route
+          path="/login"
+          element={
             <AuthRoute>
-              <Login/>
+              <Login />
             </AuthRoute>
-          } 
+          }
         />
-        <Route path="/register" element={
+        <Route
+          path="/register"
+          element={
             <AuthRoute>
-              <Register/>
+              <Register />
             </AuthRoute>
-          } 
+          }
         />
-
-        <Route path="/cars"element={
+        <Route
+          path="/cars"
+          element={
             <ProtectedRoute>
               <YourCars />
             </ProtectedRoute>
@@ -59,8 +64,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-
-        <Route path="*" element={<Navigate to={user ? "/cars" : "/login"} replace />}/>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </main>
   <Footer />
