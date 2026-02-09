@@ -24,3 +24,13 @@ dist-ssr
 *.sw?
 
 .env
+
+# terraform 
+values.tfvars
+.terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+.crash.log
+terraform.tfplan
