@@ -1,0 +1,42 @@
+.notFound-page {
+  height: 100vh;
+  overflow-y: auto;
+  padding: 24px;
+
+  background-image: url('/404.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+  z-index: 0;
+}
+
+/*content above the background */
+.notFound-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.notfound-page {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.notfound-page h1 {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.notfound-page p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  color: #fff;
+}
+
